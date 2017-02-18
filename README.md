@@ -1,2 +1,2 @@
-# boilerplate-mongomongoose
-A boilerplate for the freeCodeCamp curriculum.
+FCC Mongo & Mongoose Challenges
+===============================
