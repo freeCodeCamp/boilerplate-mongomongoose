@@ -194,14 +194,14 @@ router.post('/find-one-update', function(req, res, next) {
   var p = new Person(req.body);
   p.save(function(err, pers) {
     if(err) { return next(err) }
-    if(!data) {
-      console.log('Missing `done()` argument');
-      return next({message: 'Missing callback argument'});
-    }
     try {
       update(pers.name, function(err, data) {
         clearTimeout(t);
         if(err) { return next(err) }
+        if (!data) {
+          console.log('Missing `done()` argument');
+          return next({ message: 'Missing callback argument' });
+        }
         res.json(data);
         p.remove();
       });
@@ -283,14 +283,14 @@ router.post('/query-tools', function(req, res, next) {
     if(err) if(err) { return next(err) }
     Person.create(req.body, function(err, pers) {
       if(err) { return next(err) }
-      if(!data) {
-        console.log('Missing `done()` argument');
-        return next({message: 'Missing callback argument'});
-      }
       try {
         chain(function(err, data) {
           clearTimeout(t);
           if(err) { return next(err) }
+          if (!data) {
+            console.log('Missing `done()` argument');
+            return next({ message: 'Missing callback argument' });
+          }
           res.json(data);
         });
       } catch (e) {
