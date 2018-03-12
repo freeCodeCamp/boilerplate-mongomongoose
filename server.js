@@ -247,9 +247,8 @@ router.post('/remove-one-person', function(req, res, next) {
 
 var removeMany = require('./myApp.js').removeManyPeople;
 router.post('/remove-many-people', function(req, res, next) {
-  console.log(req.body);
   Person.remove({}, function(err) {
-    if(err) if(err) { return next(err) }
+    if(err) { return next(err) }
     var t = setTimeout(() => { next({message: 'timeout'}) }, timeout);
     Person.create(req.body, function(err, pers) {
       if(err) { return next(err) }
@@ -263,9 +262,20 @@ router.post('/remove-many-people', function(req, res, next) {
           }
           Person.count(function(err, cnt) {
             if(err) { return next(err) }
-            data = JSON.parse(data);
-            data.count = cnt;
-            res.json(data);
+            if (data.ok === undefined) {
+              // for mongoose v4
+               try {
+                data = JSON.parse(data);
+              } catch (e) {
+                console.log(e);
+                return next(e);
+              }
+            }
+            res.json({
+              n: data.n,
+              count: cnt,
+              ok: data.ok
+            });
           })
         });
       } catch (e) {
