@@ -50,6 +50,14 @@ router.get('/file/*?', function(req, res, next) {
   });
 });
 
+router.get('/is-mongoose-ok', function(req, res) {
+  if (mongoose) {
+    res.json({isMongooseOk: !!mongoose.connection.readyState})
+  } else {
+    res.json({isMongooseOk: false})
+  }
+});
+
 var Person = require('./myApp.js').PersonModel;
 
 router.use(function(req, res, next) {
