@@ -2,6 +2,8 @@
 * 3. FCC Mongo & Mongoose Challenges
 * ==================================
 ***********************************************/
+/** Required for local development*/
+require('dotenv').config();
 
 /** # MONGOOSE SETUP #
 /*  ================== */
