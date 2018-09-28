@@ -1,0 +1,14 @@
+# Node.js and dotenv files
+node_modules
+.env
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# VisualStudio Code project files
+.vscode/*
+
+
