@@ -40,7 +40,7 @@
 
 var Person /* = <Your Model> */
 
-// **Note**: GoMix is a real server, and in real servers interactions with
+// **Note**: Glitch is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
 // (e.g. someone hits an endpoint on your API). We'll follow the same approach
 // in these exercises. The `done()` function is a callback that tells us that
