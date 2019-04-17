@@ -215,7 +215,7 @@ var removeById = function(personId, done) {
 
 // `Model.remove()` is useful to delete all the documents matching given criteria.
 // Delete all the people whose name is "Mary", using `Model.remove()`.
-// Pass to it a query ducument with the "name" field set, and of course a callback.
+// Pass to it a query document with the "name" field set, and of course a callback.
 //
 // Note: `Model.remove()` doesn't return the removed document, but a document
 // containing the outcome of the operation, and the number of items affected.
