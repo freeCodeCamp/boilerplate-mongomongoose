@@ -320,6 +320,7 @@ router.post('/query-tools', function(req, res, next) {
 });
 
 app.use('/_api', enableCORS, router);
+app.use('//_api', enableCORS, router);
 
 // Error handler
 app.use(function(err, req, res, next) {
