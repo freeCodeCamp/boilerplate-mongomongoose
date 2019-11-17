@@ -223,7 +223,7 @@ router.post('/find-one-update', function(req, res, next) {
 var removeOne = require('./myApp.js').removeById;
 router.post('/remove-one-person', function(req, res, next) {
   Person.remove({}, function(err) {
-    if(err) if(err) { return next(err) }
+    if(err) { return next(err) }
     var t = setTimeout(() => { next({message: 'timeout'}) }, timeout);
     var p = new Person(req.body);
     p.save(function(err, pers) {
@@ -298,7 +298,7 @@ var chain = require('./myApp.js').queryChain;
 router.post('/query-tools', function(req, res, next) {
   var t = setTimeout(() => { next({message: 'timeout'}) }, timeout);
   Person.remove({}, function(err) {
-    if(err) if(err) { return next(err) }
+    if(err) { return next(err) }
     Person.create(req.body, function(err, pers) {
       if(err) { return next(err) }
       try {
