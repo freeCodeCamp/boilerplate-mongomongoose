@@ -15,6 +15,7 @@
 // mongoose.connect(<Your URI>, { useNewUrlParser: true, useUnifiedTopology: true }); 
 
 var mongoose = require('mongoose');
+var schema = mongoose.Schema;
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
@@ -43,7 +44,14 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 
 // <Your code here >
 
-var Person /* = <Your Model> */
+
+var personSchema = new schema({
+  name:  {type: String, required: true},
+  age:  Number,
+  favoriteFoods:  [String]
+});
+
+var Person = mongoose.model('Person', personSchema);
 
 // **Note**: Glitch is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
@@ -80,11 +88,19 @@ var Person /* = <Your Model> */
 //    ...do your stuff here...
 // });
 
-var createAndSavePerson = function(done) {
-  
-  done(null /*, data*/);
-
+var createAndSavePerson = function(done){
+  var me = new Person({
+      name:  "Clarisse",
+      age:  23,
+      favouriteFoods:  ["Cheese", "Chocolate"]
+    });
+  me.save(function(err, data){
+    if(err) return console.err;
+    done(null, data);
+  });
 };
+    
+    
 
 /** 4) Create many People with `Model.create()` */
 
@@ -95,10 +111,16 @@ var createAndSavePerson = function(done) {
 // Create many people using `Model.create()`, using the function argument
 // 'arrayOfPeople'.
 
+var arrayOfPeople = [
+  {name: "Anna", age: 23, favoriteFoods: ["Chocolat", "Lardons"]}, 
+  {name: "Héliot", age: 8, favoriteFoods: ["Dog food", "Anything"]}
+];
+
 var createManyPeople = function(arrayOfPeople, done) {
-    
-    done(null/*, data*/);
-    
+    Person.create(arrayOfPeople, function(err, people){
+      if(err) return console.log(err);
+      done(null, people);
+    }); 
 };
 
 /** # C[R]UD part II - READ #

@@ -1,5 +1,6 @@
 dependencies:
   body-parser: 1.19.0
+  errors: 0.3.0
   express: 4.17.1
   mongodb: 3.5.5
   mongoose: 5.9.5
@@ -124,6 +125,10 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
+  /errors/0.3.0:
+    dev: false
+    resolution:
+      integrity: sha1-Vy7Q+tgqsmugTnl4KPcQPdggcy8=
   /escape-html/1.0.3:
     dev: false
     resolution:
@@ -711,6 +716,7 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   body-parser: ^1.15.2
+  errors: ^0.3.0
   express: ^4.12.4
   mongodb: ^3.5.5
   mongoose: ^5.9.5
