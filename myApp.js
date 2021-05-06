@@ -1,9 +1,23 @@
+// require('mongoose');
+// let mongoose;
+// try {
+//   mongoose = require("mongoose");
+// } catch (e) {
+//   console.log(e);
+// }
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
 require('dotenv').config();
 // const cool = require('cool-ascii-faces');
 // const express = require()
 
+const personSchema = new Schema({
+  name: String,
+  age: Number,
+  favoriteFoods: [String]
+});
 
-let Person;
+let Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
