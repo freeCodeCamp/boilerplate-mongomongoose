@@ -1,15 +1,21 @@
 {
-    "name": "fcc-mongo-mongoose-challenges",
+    "name": "prabodh-bharose-portfolio-app",
     "version": "0.0.1",
-    "description": "A boilerplate project",
+    "description": "This is a portfolio app",
     "main": "server.js",
     "scripts": {
         "start": "node server.js"
     },
     "dependencies": {
         "body-parser": "^1.15.2",
+        "cool-ascii-faces": "^1.3.4",
         "dotenv": "^8.2.0",
-        "express": "^4.12.4"
+        "express": "^4.12.4",
+        "mongoose": "5.12.7"
+    },
+    "devDependencies": {
+        "got": "11.8.2",
+        "tape": "5.2.2"
     },
     "repository": {
         "type": "git",
@@ -18,7 +24,9 @@
     "keywords": [
         "node",
         "mongoose",
-        "express"
+        "express",
+        "heroku",
+        "freecodecamp"
     ],
     "license": "MIT"
 }

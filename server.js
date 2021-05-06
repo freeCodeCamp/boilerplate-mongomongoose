@@ -5,6 +5,7 @@
 
 const express = require("express");
 const app = express();
+const cool = require('cool-ascii-faces');
 let mongoose;
 try {
   mongoose = require("mongoose");
@@ -409,6 +410,9 @@ app.use(function (err, req, res, next) {
   }
 });
 
+// for the sake of adding
+app.get("/cool",(req,res) => {res.send(cool())});
+
 // Unmatched routes handler
 app.use(function (req, res) {
   if (req.method.toLowerCase() === "options") {
@@ -417,6 +421,7 @@ app.use(function (req, res) {
     res.status(404).type("txt").send("Not Found");
   }
 });
+
 
 const listener = app.listen(process.env.PORT || 3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
