@@ -41,8 +41,6 @@ const TIMEOUT = 10000;
 app.use(bodyParser.urlencoded({ extended: "false" }));
 app.use(bodyParser.json());
 
-// connect database
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "views", "index.html"));
@@ -407,9 +405,9 @@ app.use("/_api", enableCORS, router);
 app.use(function (err, req, res, next) {
   if (err) {
     res
-      .status(err.status || 500)
-      .type("txt")
-      .send(err.message || "SERVER ERROR");
+    .status(err.status || 500)
+    .type("txt")
+    .send(err.message || "SERVER ERROR");
   }
 });
 
@@ -435,6 +433,9 @@ app.use(function (req, res) {
   }
 });
 
+// connect database
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// console.log(process.env.MONGO_URI);
 
 const listener = app.listen(process.env.PORT || 3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
