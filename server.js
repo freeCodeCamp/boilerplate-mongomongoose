@@ -412,6 +412,16 @@ app.use(function (err, req, res, next) {
 
 // for the sake of adding
 app.get("/cool",(req,res) => {res.send(cool())});
+app.get('/time', (req,res) => res.send(showTimes()));
+
+showTimes = () => {
+  let result = '';
+  const times = process.env.TIMES || 5;
+  for (i=0;i<times;i++){
+    result += i + ' ';
+  }
+  return result;
+}
 
 // Unmatched routes handler
 app.use(function (req, res) {
