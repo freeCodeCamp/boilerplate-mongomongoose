@@ -32,14 +32,20 @@ const createAndSavePerson = (done) => {
       return handleError(err);
     }
     // done
-    console.log('Doc Save Success');
+    // console.log('Doc Save Success');
     done(null , data);
   });
 
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, function(err){
+    if(err){
+      console.log(err);
+      return handleError(err);
+    }
+    done(null, arrayOfPeople);
+  });
 };
 
 const findPeopleByName = (personName, done) => {
