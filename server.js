@@ -108,7 +108,7 @@ router.get("/create-and-save-person", function (req, res, next) {
 
 const createPeople = require("./myApp.js").createManyPeople;
 router.post("/create-many-people", function (req, res, next) {
-  Person.remove({}, function (err) {
+  Person.deleteMany({}, function (err) {
     if (err) {
       return next(err);
     }
@@ -130,7 +130,7 @@ router.post("/create-many-people", function (req, res, next) {
           return next(err);
         }
         res.json(pers);
-        Person.remove().exec();
+        Person.deleteMany().exec();
       });
     });
   });
@@ -155,7 +155,7 @@ router.post("/find-all-by-name", function (req, res, next) {
         return next({ message: "Missing callback argument" });
       }
       res.json(data);
-      Person.remove().exec();
+      Person.deleteMany().exec();
     });
   });
 });
@@ -272,7 +272,7 @@ router.post("/find-one-update", function (req, res, next) {
 
 const removeOne = require("./myApp.js").removeById;
 router.post("/remove-one-person", function (req, res, next) {
-  Person.remove({}, function (err) {
+  Person.deleteMany({}, function (err) {
     if (err) {
       return next(err);
     }
@@ -295,7 +295,7 @@ router.post("/remove-one-person", function (req, res, next) {
             return next({ message: "Missing callback argument" });
           }
           console.log(data);
-          Person.count(function (err, cnt) {
+          Person.estimatedDocumentCount(function (err, cnt) {
             if (err) {
               return next(err);
             }
@@ -315,7 +315,7 @@ router.post("/remove-one-person", function (req, res, next) {
 
 const removeMany = require("./myApp.js").removeManyPeople;
 router.post("/remove-many-people", function (req, res, next) {
-  Person.remove({}, function (err) {
+  Person.deleteMany({}, function (err) {
     if (err) {
       return next(err);
     }
@@ -336,7 +336,7 @@ router.post("/remove-many-people", function (req, res, next) {
             console.log("Missing `done()` argument");
             return next({ message: "Missing callback argument" });
           }
-          Person.count(function (err, cnt) {
+          Person.estimatedDocumentCount(function (err, cnt) {
             if (err) {
               return next(err);
             }
@@ -369,7 +369,7 @@ router.post("/query-tools", function (req, res, next) {
   let t = setTimeout(() => {
     next({ message: "timeout" });
   }, TIMEOUT);
-  Person.remove({}, function (err) {
+  Person.deleteMany({}, function (err) {
     if (err) {
       return next(err);
     }
