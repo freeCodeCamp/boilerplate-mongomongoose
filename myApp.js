@@ -1,6 +1,11 @@
 require('dotenv').config();
 const mongoose = require("mongoose");
 
+mongoose.connect('mongodb+srv://joshuah91:JOSEphine@cluster0.5ppqk2h.mongodb.net/cluster0?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 let Person;
 
 const createAndSavePerson = (done) => {
