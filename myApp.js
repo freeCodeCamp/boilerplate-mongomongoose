@@ -9,12 +9,12 @@ mongoose.connect(
   }
 );
 
-const Schema = mongoose.Schema;
+const Schema22 = mongoose.Schema;
 
-const personSchema = new Schema({
+const personSchema = new Schema22({
   name: { type: String, required: true },
   age: Number,
-  favoriteFoods: [String],
+  favoriteFoods: [String]
 });
 
 const Person = mongoose.model("Person", personSchema);
