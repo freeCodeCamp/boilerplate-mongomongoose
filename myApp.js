@@ -82,7 +82,7 @@ const findAndUpdate = (personName, done) => {
   Person.findOneAndUpdate(
     { name: personName },
     { age: ageToSet },
-    {new: true},
+    { new: true },
     function (err, updatedDoc) {
       if (err) return console.error(err);
       done(null, updatedDoc);
@@ -91,7 +91,10 @@ const findAndUpdate = (personName, done) => {
 };
 
 const removeById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findOneAndRemove(personId, function (err, removedDoc) {
+    if (err) return console.log(err);
+    done(null, removedDoc);
+  });
 };
 
 const removeManyPeople = (done) => {
