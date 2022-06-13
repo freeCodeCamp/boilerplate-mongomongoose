@@ -14,7 +14,7 @@ const Schema22 = mongoose.Schema;
 const personSchema = new Schema22({
   name: { type: String, required: true },
   age: Number,
-  favoriteFoods: [String]
+  favoriteFoods: [String],
 });
 
 const Person = mongoose.model("Person", personSchema);
@@ -22,7 +22,17 @@ const Person = mongoose.model("Person", personSchema);
 // let Person;
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  var reactAdmin = new Person({
+    name: "Balogun Joshua",
+    age: 32,
+    favoriteFoods: ["plantain", "Chicken", "Yoghurt"],
+  });
+  reactAdmin.save(function (err, data) {
+    if (err) {
+      return console.error(err);
+    }
+    done(null, data);
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
