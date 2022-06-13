@@ -1,12 +1,26 @@
-require('dotenv').config();
+require("dotenv").config();
 const mongoose = require("mongoose");
 
-mongoose.connect('mongodb+srv://joshuah91:JOSEphine@cluster0.5ppqk2h.mongodb.net/cluster0?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+mongoose.connect(
+  "mongodb+srv://joshuah91:JOSEphine@cluster0.5ppqk2h.mongodb.net/cluster0?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+
+const Schema = mongoose.Schema;
+
+const personSchema = new Schema({
+  name: { type: String, required: true },
+  age: Number,
+  favoriteFoods: [[String], { mostFav: String, howOften: String }],
 });
 
-let Person;
+const Person = mongoose.model("Person", personSchema);
+
+
+// let Person;
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
