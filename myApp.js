@@ -17,10 +17,10 @@ const personSchema = new Schema({
   favoriteFoods: [[String], { mostFav: String, howOften: String }],
 });
 
-const Person = mongoose.model("Person", personSchema);
+// const Person = mongoose.model("Person", personSchema);
 
 
-// let Person;
+let Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
