@@ -14,11 +14,10 @@ const Schema = mongoose.Schema;
 const personSchema = new Schema({
   name: { type: String, required: true },
   age: Number,
-  favoriteFoods: [[String], { mostFav: String, howOften: String }],
+  favoriteFoods: [String],
 });
 
 const Person = mongoose.model("Person", personSchema);
-
 
 // let Person;
 
