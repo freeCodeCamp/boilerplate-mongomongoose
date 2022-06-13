@@ -28,15 +28,20 @@ const createAndSavePerson = (done) => {
     favoriteFoods: ["plantain", "Chicken", "Yoghurt"],
   });
   reactAdmin.save(function (err, data) {
-    if (err) {
-      return console.error(err);
-    }
+    if (err) return console.error(err);
     done(null, data);
   });
 };
-
+var arrayOfPeople = [
+  { name: "Jay Balz", age: 30, favoriteFoods: ["tacos"] },
+  { name: "Josh Balo", age: 28, favoriteFoods: ["beans"] },
+  { name: "Joshuah", age: 26, favoriteFoods: ["bread"] },
+];
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, function (err, people) {
+    if (err) return console.error(err);
+    done(null, people);
+  });
 };
 
 const findPeopleByName = (personName, done) => {
