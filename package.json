@@ -1,24 +1,26 @@
 {
-    "name": "fcc-mongo-mongoose-challenges",
-    "version": "0.0.1",
-    "description": "A boilerplate project",
-    "main": "server.js",
-    "scripts": {
-        "start": "node server.js"
-    },
-    "dependencies": {
-        "body-parser": "^1.15.2",
-        "dotenv": "^8.2.0",
-        "express": "^4.12.4"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/freeCodeCamp/boilerplate-mongomongoose.git"
-    },
-    "keywords": [
-        "node",
-        "mongoose",
-        "express"
-    ],
-    "license": "MIT"
+  "name": "fcc-mongo-mongoose-challenges",
+  "version": "0.0.1",
+  "description": "A boilerplate project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.12.4",
+    "mongodb": "~3.6.0",
+    "mongoose": "~5.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freeCodeCamp/boilerplate-mongomongoose.git"
+  },
+  "keywords": [
+    "node",
+    "mongoose",
+    "express"
+  ],
+  "license": "MIT"
 }
