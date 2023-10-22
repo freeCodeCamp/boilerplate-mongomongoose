@@ -1,15 +1,43 @@
 require('dotenv').config();
+
+// To build project dependencies, run npm install
+// To run local =host and app, run npm start
+// Import mongoose
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MOGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-let Person;
+//  MONGO_URI is defined in .env file, process.env is allowed because of the dotenv.config() module
+// Connect to remote DB
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+var db = mongoose.connection;
 
+// Creation of a schema
+let personSchema = new mongoose.Schema({
+  name: {type: String, required: true},
+  age: Number,
+  favoriteFoods: [String]
+});
+//Creation of a model based on the schema
+const Person =  mongoose.model('Person', personSchema);
+
+// Creation of a document based on the model, aka instance of the model
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  let toto = new Person({
+    name: "toto",
+    age : 34,
+    favoriteFoods: ["vegetables", "pork"]
+  });
+  toto.save((err, data) => {
+    if (err) return console.log(err);
+    done(null, data);
+  });
+  
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, (err, data) => {
+    if (err) return console.log(err);
+    done(null , data);
+  })
 };
 
 const findPeopleByName = (personName, done) => {
