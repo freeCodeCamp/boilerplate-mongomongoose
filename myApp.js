@@ -6,7 +6,10 @@ mongoose.connect(process.env.MONGO_URI);
 
 
 /** 2) Create a 'Person' Model */
-var personSchema = new mongoose.Schema({
+
+const Schema =mongoose.Schema;
+
+const personSchema = new Schema({
   name: String,
   age: Number,
   favoriteFoods: [String]
@@ -16,9 +19,13 @@ var personSchema = new mongoose.Schema({
 var Person = mongoose.model('Person', personSchema);
 
 var createAndSavePerson = function(done) {
-  var janeFonda = new Person({name: "Jane Fonda", age: 84, favoriteFoods: ["eggs", "fish", "fresh fruit"]});
+  var walter = new Person({
+    name: "Walter", 
+    age: 29, 
+    favoriteFoods: ["eggs", "indian"]
+  });
 
-  janeFonda.save(function(err, data) {
+  walter.save(function(err, data) {
     if (err) return console.error(err);
     done(null, data)
   });
