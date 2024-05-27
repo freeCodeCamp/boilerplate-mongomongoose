@@ -1,5 +1,11 @@
 require('dotenv').config();
+const mongoose = require('mongoose');
 
+const mongoUri = process.env.MONGO_URI;
+console.log(mongoUri);
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log('Great. You are connected to the database'))
+.catch(err => console.log(err));
 
 let Person;
 
